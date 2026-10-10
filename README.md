@@ -37,15 +37,25 @@ Execute Django admin using localhost and create details for 10 entries
 ## PROGRAM
 ```
 models.py
+from django.db import models
+from django.contrib import admin
+class User(models.Model):
+    Number = models.IntegerField(primary_key=True)
+    Name = models.CharField(max_length=15)
+    Email = models.EmailField()
+    Address = models.TextField()
+    City = models.TextField()
+    Pincode = models.IntegerField()
+    Password = models.CharField()
+
 class UserAdmin(admin.ModelAdmin):
     list_display = ["Number","Name","Email","Address","City","Pincode","Password"]
-```
-admin.py
+
+admin.py 
 from django.contrib import admin
 from .models import User,UserAdmin
 admin.site.register(User,UserAdmin)
-
-
+```
 ## OUTPUT
 ![alt text](<Screenshot (9).png>)
 
